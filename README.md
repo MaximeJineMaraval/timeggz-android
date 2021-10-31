@@ -28,7 +28,7 @@ This project is build with the latest android technologies.
 | Asynchronous work | Coroutines |
 
 ## CI
-[![Build Status](https://app.bitrise.io/app/4ee360a73d06b617/status.svg?token=W4ti2RvwMj433skK2s0YvQ&branch=master)](https://app.bitrise.io/app/4ee360a73d06b617)
+[![Build Status](https://app.bitrise.io/app/4ee360a73d06b617/status.svg?token=W4ti2RvwMj433skK2s0YvQ&branch=main)](https://app.bitrise.io/app/4ee360a73d06b617)
 
 The project is registered on [Bitrise](https://app.bitrise.io/app/4ee360a73d06b617#/builds "Bitrise"). The CI is used to check every Pull Requests and deploy the app.
 
