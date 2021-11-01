@@ -35,7 +35,8 @@ class MainActivity : ComponentActivity() {
 fun Greeting() {
     Text(
         modifier = Modifier.padding(16.dp),
-        text = "Hello Timeggz!")
+        text = "Hello Timeggz!"
+    )
 }
 
 @Preview(showBackground = true)
