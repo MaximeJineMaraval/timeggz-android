@@ -34,7 +34,13 @@ The project is registered on [Bitrise](https://app.bitrise.io/app/4ee360a73d06b6
 
 ## Code Analysis
 
-//TODO
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=MaximeJineMaraval_timeggz-android&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=MaximeJineMaraval_timeggz-android)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=MaximeJineMaraval_timeggz-android&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=MaximeJineMaraval_timeggz-android)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=MaximeJineMaraval_timeggz-android&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=MaximeJineMaraval_timeggz-android)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=MaximeJineMaraval_timeggz-android&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=MaximeJineMaraval_timeggz-android)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=MaximeJineMaraval_timeggz-android&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=MaximeJineMaraval_timeggz-android)
+
+The project is analyzed with [SonarCloud](https://sonarcloud.io/project/overview?id=MaximeJineMaraval_timeggz-android) at every push on the main branch and for every pull request.
 
 ## Contributing
 
