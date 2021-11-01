@@ -38,7 +38,7 @@ The project is registered on [Bitrise](https://app.bitrise.io/app/4ee360a73d06b6
 
 ## Contributing
 
-//TODO
+You can read the contributing section [here](https://github.com/MaximeJineMaraval/timeggz-android/blob/main/CONTRIBUTING.md).
 
 ## License
 
