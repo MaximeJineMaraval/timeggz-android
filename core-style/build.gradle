@@ -1,0 +1,7 @@
+plugins {
+    id 'com.android.library'
+}
+
+apply from: "$project.rootDir/gradle/files/default_build.gradle"
+apply from: "$project.rootDir/gradle/files/ui.gradle"
+apply from: "$project.rootDir/gradle/files/testing.gradle"

@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Timeggz"
 include ':app'
+include ':core-extensions'
+include ':core-style'

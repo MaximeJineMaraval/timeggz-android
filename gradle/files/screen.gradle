@@ -1,0 +1,8 @@
+apply from: "$project.rootDir/gradle/files/ui.gradle"
+
+dependencies {
+    implementation project(path: ':core-style')
+
+    implementation 'androidx.activity:activity-compose:1.4.0'
+    implementation "androidx.compose.runtime:runtime-livedata:1.0.5"
+}
