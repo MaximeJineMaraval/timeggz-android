@@ -8,7 +8,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModelProvider
 import com.jine.timeggz.core_style.themes.TimeggzTheme
-import com.jine.timeggz.ui.screens.TimerScreen
+import com.jine.timeggz.ui.timer.TimerScreen
 
 class MainActivity : ComponentActivity() {
 

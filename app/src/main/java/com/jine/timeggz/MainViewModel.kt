@@ -19,25 +19,33 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         set(value) {
             field = value
             _readState.postValue(value.readState)
-            _timeInSeconds.postValue(value.timeInSeconds)
+            _timeLeftInSeconds.postValue(value.timeLeftInSeconds)
+            _timeElapsedInSeconds.postValue(value.timeElapsedInSeconds)
         }
 
     private val _readState: MutableLiveData<ReadState> = MutableLiveData(timer.readState)
-    private val _timeInSeconds: MutableLiveData<Int> = MutableLiveData(timer.timeInSeconds)
+    private val _timeLeftInSeconds: MutableLiveData<Int> = MutableLiveData(timer.timeLeftInSeconds)
+    private val _timeElapsedInSeconds: MutableLiveData<Int> =
+        MutableLiveData(timer.timeElapsedInSeconds)
 
     val readState: LiveData<ReadState>
         get() = _readState
-    val timeInSeconds: LiveData<Int>
-        get() = _timeInSeconds
+    val timeLeftInSeconds: LiveData<Int>
+        get() = _timeLeftInSeconds
+    val timeElapsedInSeconds: LiveData<Int>
+        get() = _timeElapsedInSeconds
 
     fun startTimer() {
         timer = timer.copy(readState = ReadState.STARTED)
         viewModelScope.launchDefault {
-            getTimerFlow().collectLatest { timeInSeconds ->
-                timer = if (timeInSeconds == 0) {
-                    timer.copy(timeInSeconds = timeInSeconds, readState = ReadState.FINISHED)
+            getTimerFlow().collectLatest { timeLeftInSeconds ->
+                timer = if (timeLeftInSeconds == 0) {
+                    timer.copy(
+                        timeLeftInSeconds = timeLeftInSeconds,
+                        readState = ReadState.FINISHED
+                    )
                 } else {
-                    timer.copy(timeInSeconds = timeInSeconds)
+                    timer.copy(timeLeftInSeconds = timeLeftInSeconds)
                 }
             }
         }
@@ -52,20 +60,24 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun getInitialTimer(): Timer {
-        return Timer(ReadState.INITIAL, 180)
+        return Timer(TIMER_INITIAL_VALUE, ReadState.INITIAL, TIMER_INITIAL_VALUE)
     }
 
     private fun getTimerFlow(): Flow<Int> {
         return flow {
-            emit(timer.timeInSeconds)
-            while (timer.timeInSeconds > 0) {
+            emit(timer.timeLeftInSeconds)
+            while (timer.timeLeftInSeconds > 0) {
                 delay(1000L)
                 if (timer.readState == ReadState.STARTED) {
-                    emit(timer.timeInSeconds - 1)
+                    emit(timer.timeLeftInSeconds - 1)
                 } else {
                     break
                 }
             }
         }
+    }
+
+    companion object {
+        private const val TIMER_INITIAL_VALUE = 180
     }
 }

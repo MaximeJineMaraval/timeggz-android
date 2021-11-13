@@ -24,7 +24,7 @@ val Error80 = Color(0xFFFFB4A9)
 val Error90 = Color(0xFFFFDAD4)
 
 val Neutral10 = Color(0xFF1F1B16)
-val Neutral95 = Color(0xFFF8EFE6)
+val Neutral90 = Color(0xFFEAE1D8)
 
 val NeutralVariant30 = Color(0xFF4E4538)
 val NeutralVariant50 = Color(0xFF807567)
@@ -52,9 +52,9 @@ val LightColorPalette = lightColorScheme(
     errorContainer = Error30,
     onErrorContainer = Error90,
     // Background and surface
-    background = Neutral95,
+    background = Neutral90,
     onBackground = Neutral10,
-    surface = Neutral95,
+    surface = Neutral90,
     onSurface = Neutral10,
     surfaceVariant = NeutralVariant90,
     onSurfaceVariant = NeutralVariant30,
