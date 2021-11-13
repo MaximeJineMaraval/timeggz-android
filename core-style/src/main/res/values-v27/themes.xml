@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Timeggz" parent="Base.Theme.Timeggz">
+        <item name="android:navigationBarColor">@color/neutral_90</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+
+</resources>

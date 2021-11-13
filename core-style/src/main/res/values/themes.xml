@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Timeggz" parent="android:Theme.Material.Light.NoActionBar">
+
+    <style name="Base.Theme.Timeggz" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorBackground">@color/neutral_90</item>
         <item name="android:statusBarColor">@color/neutral_90</item>
-        <item name="android:background">@color/neutral_90</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
+
+    <style name="Theme.Timeggz" parent="Base.Theme.Timeggz" />
+
 </resources>
