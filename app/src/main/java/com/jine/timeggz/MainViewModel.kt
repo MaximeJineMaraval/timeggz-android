@@ -78,6 +78,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     companion object {
-        private const val TIMER_INITIAL_VALUE = 180
+        private const val TIMER_INITIAL_VALUE = 540
     }
 }

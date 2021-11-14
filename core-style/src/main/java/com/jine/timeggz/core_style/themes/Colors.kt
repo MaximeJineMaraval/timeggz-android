@@ -3,6 +3,8 @@ package com.jine.timeggz.core_style.themes
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 
+// Theme colors
+
 val Primary20 = Color(0xFF432C00)
 val Primary30 = Color(0xFF604100)
 val Primary80 = Color(0xFFFFBA25)
@@ -60,3 +62,10 @@ val LightColorPalette = lightColorScheme(
     onSurfaceVariant = NeutralVariant30,
     outline = NeutralVariant50
 )
+
+// Egg colors
+
+val RawYolk = Color(255, 185, 57)
+val BoiledYolk = Color(248, 133, 41)
+val SoftYolk = Color(253, 153, 40)
+val HardYolk = Color(255, 213, 44)
