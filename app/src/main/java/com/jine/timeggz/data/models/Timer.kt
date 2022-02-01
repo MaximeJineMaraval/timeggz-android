@@ -1,11 +1,14 @@
 package com.jine.timeggz.data.models
 
 data class Timer(
-    val initialTimeInSeconds: Int,
+    val initialTimeInCentiSeconds: Int,
     var readState: ReadState,
-    var timeLeftInSeconds: Int
+    var timeLeftInCentiSeconds: Int
 ) {
 
-    val timeElapsedInSeconds: Int
-        get() = initialTimeInSeconds - timeLeftInSeconds
+    val timeElapsedInCentiSeconds: Int
+        get() = initialTimeInCentiSeconds - timeLeftInCentiSeconds
+
+    val timeLeftInSeconds: Int
+        get() = timeLeftInCentiSeconds / 100
 }

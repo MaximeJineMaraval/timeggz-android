@@ -16,11 +16,15 @@ import com.jine.timeggz.core_style.themes.*
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
+import kotlin.random.Random
 
 @Composable
-internal fun Egg(modifier: Modifier = Modifier, timeElapsedInSeconds: Int) {
-    val eggWhiteAlphaState = getEggWhiteAlphaState(timeElapsedInSeconds = timeElapsedInSeconds)
-    val eggYolkColorState = getYolkColorState(timeElapsedInSeconds = timeElapsedInSeconds)
+internal fun Egg(modifier: Modifier = Modifier, timeElapsedInCentiSeconds: Int) {
+    val eggWhiteAlphaState =
+        getEggWhiteAlphaState(timeElapsedInSeconds = timeElapsedInCentiSeconds / 100)
+    val eggYolkColorState = getYolkColorState(timeElapsedInSeconds = timeElapsedInCentiSeconds / 100)
+    val centerOffsetX = Random.nextInt(from = -10, until = 10)
+    val centerOffsetY = Random.nextInt(from = -10, until = 10)
     Canvas(
         modifier
             .fillMaxSize()
@@ -31,12 +35,18 @@ internal fun Egg(modifier: Modifier = Modifier, timeElapsedInSeconds: Int) {
         drawEgg(
             color = Color.White,
             eggHeight = eggHeight,
-            center = Offset(x = canvasWidth / 2, y = canvasHeight / 2),
+            center = Offset(
+                x = (canvasWidth / 2) + centerOffsetX,
+                y = (canvasHeight / 2) + centerOffsetY
+            ),
             alpha = eggWhiteAlphaState.value
         )
         drawCircle(
             color = eggYolkColorState.value,
-            center = Offset(x = canvasWidth / 2, y = (canvasHeight / 2) + (eggHeight / 4)),
+            center = Offset(
+                x = (canvasWidth / 2) + centerOffsetX,
+                y = ((canvasHeight / 2) + (eggHeight / 4)) + centerOffsetY
+            ),
             radius = eggHeight / 2.5f
         )
     }
@@ -142,6 +152,6 @@ private fun DrawScope.drawEgg(color: Color, alpha: Float = 1.0f, eggHeight: Floa
 @Composable
 fun EggPreview() {
     TimeggzTheme {
-        Egg(timeElapsedInSeconds = 540)
+        Egg(timeElapsedInCentiSeconds = 540 * 100)
     }
 }

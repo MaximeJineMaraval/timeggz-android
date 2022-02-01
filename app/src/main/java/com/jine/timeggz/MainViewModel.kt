@@ -19,33 +19,38 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         set(value) {
             field = value
             _readState.postValue(value.readState)
-            _timeLeftInSeconds.postValue(value.timeLeftInSeconds)
-            _timeElapsedInSeconds.postValue(value.timeElapsedInSeconds)
+            if (value.timeLeftInCentiSeconds % 100 == 0) {
+                _timeLeftInSeconds.postValue(value.timeLeftInSeconds)
+            }
+            if (value.timeElapsedInCentiSeconds % 5 == 0) {
+                _timeElapsedInCentiSeconds.postValue(value.timeElapsedInCentiSeconds)
+            }
         }
 
     private val _readState: MutableLiveData<ReadState> = MutableLiveData(timer.readState)
-    private val _timeLeftInSeconds: MutableLiveData<Int> = MutableLiveData(timer.timeLeftInSeconds)
-    private val _timeElapsedInSeconds: MutableLiveData<Int> =
-        MutableLiveData(timer.timeElapsedInSeconds)
+    private val _timeLeftInSeconds: MutableLiveData<Int> =
+        MutableLiveData(timer.timeLeftInSeconds)
+    private val _timeElapsedInCentiSeconds: MutableLiveData<Int> =
+        MutableLiveData(timer.timeElapsedInCentiSeconds)
 
     val readState: LiveData<ReadState>
         get() = _readState
     val timeLeftInSeconds: LiveData<Int>
         get() = _timeLeftInSeconds
-    val timeElapsedInSeconds: LiveData<Int>
-        get() = _timeElapsedInSeconds
+    val timeElapsedInCentiSeconds: LiveData<Int>
+        get() = _timeElapsedInCentiSeconds
 
     fun startTimer() {
         timer = timer.copy(readState = ReadState.STARTED)
         viewModelScope.launchDefault {
-            getTimerFlow().collectLatest { timeLeftInSeconds ->
-                timer = if (timeLeftInSeconds == 0) {
+            getTimerFlow().collectLatest { timeLeftInCentiSeconds ->
+                timer = if (timeLeftInCentiSeconds == 0) {
                     timer.copy(
-                        timeLeftInSeconds = timeLeftInSeconds,
+                        timeLeftInCentiSeconds = timeLeftInCentiSeconds,
                         readState = ReadState.FINISHED
                     )
                 } else {
-                    timer.copy(timeLeftInSeconds = timeLeftInSeconds)
+                    timer.copy(timeLeftInCentiSeconds = timeLeftInCentiSeconds)
                 }
             }
         }
@@ -65,11 +70,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private fun getTimerFlow(): Flow<Int> {
         return flow {
-            emit(timer.timeLeftInSeconds)
-            while (timer.timeLeftInSeconds > 0) {
-                delay(1000L)
+            emit(timer.timeLeftInCentiSeconds)
+            while (timer.timeLeftInCentiSeconds > 0) {
+                delay(10L)
                 if (timer.readState == ReadState.STARTED) {
-                    emit(timer.timeLeftInSeconds - 1)
+                    emit(timer.timeLeftInCentiSeconds - 1)
                 } else {
                     break
                 }
@@ -78,6 +83,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     companion object {
-        private const val TIMER_INITIAL_VALUE = 540
+        private const val TIMER_INITIAL_VALUE = 540 * 100
     }
 }

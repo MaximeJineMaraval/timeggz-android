@@ -19,7 +19,7 @@ fun TimerScreen(
 ) {
     val readState by viewModel.readState.observeAsState(viewModel.readState.value!!)
     val timeLeftInSeconds by viewModel.timeLeftInSeconds.observeAsState(viewModel.timeLeftInSeconds.value!!)
-    val timeElapsedInSeconds by viewModel.timeElapsedInSeconds.observeAsState(viewModel.timeElapsedInSeconds.value!!)
+    val timeElapsedInCentiSeconds by viewModel.timeElapsedInCentiSeconds.observeAsState(viewModel.timeElapsedInCentiSeconds.value!!)
     Column(
         modifier = modifier
             .padding(32.dp)
@@ -31,7 +31,7 @@ fun TimerScreen(
             modifier = Modifier
                 .weight(1f)
                 .wrapContentHeight(Alignment.CenterVertically),
-            timeElapsedInSeconds = timeElapsedInSeconds
+            timeElapsedInCentiSeconds = timeElapsedInCentiSeconds
         )
         TimerButtons(readState = readState, viewModel = viewModel)
     }
